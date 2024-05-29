@@ -36,16 +36,16 @@ public class Course {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "courseId")
+    @OneToMany(mappedBy = "course")
     private List<Enrollment> enrollments;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "courseId")
+    @OneToMany(mappedBy = "course")
     private List<Message> messages;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "courseId")
+    @OneToMany(mappedBy = "course")
     private List<Lesson> lessons;
 }

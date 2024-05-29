@@ -8,7 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,15 +29,15 @@ public class Message {
     @Column
     private LocalDate sendDate;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name="sender_id", referencedColumnName = "id")
     private User sender;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name="reciver_id", referencedColumnName = "id")
     private User reciver;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name="course_id", referencedColumnName = "id")
     private Course course; 
     

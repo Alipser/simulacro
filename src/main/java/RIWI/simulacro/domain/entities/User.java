@@ -41,23 +41,23 @@ public class User {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "user")
     private List<Enrollment> enrollments;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "senderId")
+    @OneToMany(mappedBy = "sender")
     private List<Message> sended; // Dividido en dos listas separadas
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "reciverId")
+    @OneToMany(mappedBy = "reciver")
     private List<Message> recived; // Dividido en dos listas separadas
 
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "userId")
-    private List<Submision> submisions;
+    @OneToMany(mappedBy = "user")
+    private List<Submission> submisions;
     
 }
