@@ -1,11 +1,17 @@
 package RIWI.simulacro.infraestructure.abstractServices;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
 
-public interface CrudAbstractService <Req, Res> {
+public interface CrudAbstractService <Req, Res, ID> {
 
-    public List<Res> searchAll();
+    Page<Res> getAll(int page, int size);
 
-    
+    Res create(Req request);
+
+    Res update(Req request, ID id);
+
+    void delete(ID id);
+
+    Res getById(ID id);
 
 }
