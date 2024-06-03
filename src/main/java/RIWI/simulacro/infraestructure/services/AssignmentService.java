@@ -19,7 +19,6 @@ import RIWI.simulacro.domain.entities.Lesson;
 import RIWI.simulacro.domain.entities.Submission;
 import RIWI.simulacro.domain.entities.User;
 import RIWI.simulacro.domain.repositories.AssignmentRespository;
-import RIWI.simulacro.domain.repositories.CourseRespository;
 import RIWI.simulacro.domain.repositories.LessonRespository;
 import RIWI.simulacro.infraestructure.abstractServices.IAssignmentService;
 import RIWI.simulacro.utils.exceptcions.IdNotFoundException;
@@ -42,7 +41,6 @@ public class AssignmentService implements IAssignmentService {
 
     @Override
     public Page<AssignmentResponse> getAll(int page, int size) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getAll'");
     }
 
