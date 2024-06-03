@@ -7,7 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import RIWI.simulacro.api.dtos.reqest.CourseRequest;
+
 import RIWI.simulacro.api.dtos.reqest.LessonRequest;
 import RIWI.simulacro.api.dtos.response.AssignmentResponse;
 import RIWI.simulacro.api.dtos.response.CourseResponse;

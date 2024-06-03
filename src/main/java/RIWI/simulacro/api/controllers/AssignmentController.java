@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import RIWI.simulacro.api.dtos.reqest.AssignmentRequest;
+import RIWI.simulacro.api.dtos.response.AssginmenteResponseFull;
 import RIWI.simulacro.api.dtos.response.AssignmentResponse;
 import RIWI.simulacro.infraestructure.abstractServices.IAssignmentService;
 import lombok.AllArgsConstructor;
@@ -42,13 +43,20 @@ public class AssignmentController {
     @DeleteMapping("delete/{id}")
     public ResponseEntity<String> deleteMethod(@PathVariable int id){
         assignmentService.delete(id);
-        return ResponseEntity.ok("Lesson deleted");
+        return ResponseEntity.ok("Assignment deleted");
     }
 
     @PutMapping("update/{id}")
     public ResponseEntity<AssignmentResponse> putMethodName(@PathVariable int id, @RequestBody @Validated AssignmentRequest request) {
         AssignmentResponse response = assignmentService.update(request, id);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("getBy/{id}/submissions")
+    public ResponseEntity<AssginmenteResponseFull> getMethodByIdSubmission(@PathVariable int id) {
+        AssginmenteResponseFull response = assignmentService.getByIdSubmission(id);
+        return ResponseEntity.ok(response);
+        
     }
 
 

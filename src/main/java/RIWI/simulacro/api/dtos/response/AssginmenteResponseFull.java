@@ -1,28 +1,21 @@
 package RIWI.simulacro.api.dtos.response;
-
-import java.time.LocalDate;
-
+import java.util.List;
 
 
 import lombok.AllArgsConstructor;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class AssignmentResponse {
+public class AssginmenteResponseFull extends AssignmentResponse {
 
-    private int id; 
-   
-    private String assignmentTitle;
-
-    private String definition;
+    private List<SubmissionResponse> submisions;
     
-    private LocalDate duDate;
-
-    private LessonResponse lesson;
-
 }

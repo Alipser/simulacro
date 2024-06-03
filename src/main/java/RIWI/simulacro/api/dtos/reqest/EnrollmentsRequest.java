@@ -20,7 +20,7 @@ public class EnrollmentsRequest {
         private int userid;
         @NotNull(message = "User id realated to this enrollment must be not null")
         private int courseid;
-        @NotBlank(message = "Identify the enrollmet Date, It cant be Null")
+        @NotNull(message = "Identify the enrollmet Date, It cant be Null")
         private LocalDate enrrolmentDate;
     
 }
