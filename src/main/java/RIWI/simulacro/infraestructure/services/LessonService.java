@@ -9,9 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import RIWI.simulacro.api.dtos.reqest.CourseRequest;
 import RIWI.simulacro.api.dtos.reqest.LessonRequest;
+import RIWI.simulacro.api.dtos.response.AssignmentResponse;
 import RIWI.simulacro.api.dtos.response.CourseResponse;
 import RIWI.simulacro.api.dtos.response.LessonResponse;
+import RIWI.simulacro.api.dtos.response.LessonResponseFull;
 import RIWI.simulacro.api.dtos.response.UserResponse;
+import RIWI.simulacro.domain.entities.Assignment;
 import RIWI.simulacro.domain.entities.Course;
 import RIWI.simulacro.domain.entities.Lesson;
 import RIWI.simulacro.domain.entities.User;
@@ -75,6 +78,15 @@ public class LessonService implements ILessonService {
     }
 
     
+    @Override
+    public LessonResponseFull getByIdAssignments(Integer id) {
+        LessonResponseFull response = convertLessonToLessonResponseFull(lessonRespository.findById(id).orElseThrow(()->new IdNotFoundException("Lesson")));
+        return response;
+    }
+
+
+
+    
 
 
 
@@ -85,6 +97,22 @@ public class LessonService implements ILessonService {
         
         return response;
     }
+
+    public LessonResponseFull convertLessonToLessonResponseFull(Lesson entity){
+        LessonResponseFull response = new LessonResponseFull();
+        BeanUtils.copyProperties(entity, response);
+        response.setCourse(convertCourseToCourseResponse(entity.getCourse()));
+        response.setAssignments(entity.getAssignments().stream().map(this::convertAssignmentToAssignmentResponse).toList());
+        return response;
+    }
+
+    public AssignmentResponse convertAssignmentToAssignmentResponse(Assignment entity){
+        AssignmentResponse response = new AssignmentResponse();
+        BeanUtils.copyProperties(entity, response);
+        response.setLesson(null);
+        return response;
+    }
+
 
     public CourseResponse convertCourseToCourseResponse(Course entity){
         CourseResponse response = new CourseResponse();

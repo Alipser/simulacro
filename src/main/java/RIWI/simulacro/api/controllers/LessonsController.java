@@ -63,5 +63,10 @@ public class LessonsController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("getBy/{id}/assignemennts")
+    public ResponseEntity<LessonResponse> getMethodByIdAssignments(@PathVariable int id) {
+        LessonResponse response = lessonService.getByIdAssignments(id);
+        return ResponseEntity.ok(response); 
+    }
 
 }

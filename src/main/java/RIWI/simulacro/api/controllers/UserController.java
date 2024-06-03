@@ -56,6 +56,11 @@ public class UserController {
         return ResponseEntity.ok(userService.getById(id));
     }
 
+    @GetMapping("/getBy/{id}/submission")
+    public ResponseEntity<UserResponse> getMethodIdLessons(@PathVariable int id) {
+        return ResponseEntity.ok(userService.getById(id));
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deletedUsingId(@PathVariable int id) {
         userService.delete(id);

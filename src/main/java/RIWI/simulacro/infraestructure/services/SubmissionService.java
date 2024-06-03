@@ -6,8 +6,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-
-import RIWI.simulacro.api.dtos.reqest.LessonRequest;
 import RIWI.simulacro.api.dtos.reqest.SubmissionRequest;
 import RIWI.simulacro.api.dtos.response.AssignmentResponse;
 import RIWI.simulacro.api.dtos.response.CourseResponse;
