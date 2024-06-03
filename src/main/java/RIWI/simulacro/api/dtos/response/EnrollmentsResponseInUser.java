@@ -1,6 +1,5 @@
 package RIWI.simulacro.api.dtos.response;
 
-
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,16 +10,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MessageResponse {
+public class EnrollmentsResponseInUser {
+
+        
         private int id;
         
-        private String messageContent;
-     
-        private UserResponse sender;
-  
-        private UserResponse reciver;
-
-        private CourseResponse course;
-
-        private LocalDate sendDate;
+        private String course;
+        
+        private LocalDate enrrolmentDate;
+    
 }

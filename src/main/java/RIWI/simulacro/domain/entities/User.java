@@ -36,7 +36,7 @@ public class User {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude                                     
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "instructor")
     private List<Course> insTructingCourses;
 
     @ToString.Exclude

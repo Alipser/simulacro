@@ -2,6 +2,8 @@ package RIWI.simulacro.api.dtos.reqest;
 
 import RIWI.simulacro.utils.enums.RoleUser;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,6 +33,9 @@ public class UserRequest {
         @Size(min =4 , max =70 , message = "username size must be mayor than 4 and less than 70 chars")
         private String fullName;
 
-        @NotBlank(message = "Select a Roll")
+        @NotNull(message = "Select a Roll")
         private RoleUser rol;
 }
+
+
+    
