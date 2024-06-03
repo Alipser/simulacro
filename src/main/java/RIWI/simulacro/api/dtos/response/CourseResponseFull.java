@@ -1,10 +1,10 @@
 package RIWI.simulacro.api.dtos.response;
 
-
+import java.util.List;
 
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -13,9 +13,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class CourseResponse {
-    private int id;
-    private String coursName;
-    private String description;
-    private UserResponse instructor; 
+public class CourseResponseFull extends CourseResponse {
+     private List<MessageResponse> messages;
+     private List<LessonResponse> lessons;
 }

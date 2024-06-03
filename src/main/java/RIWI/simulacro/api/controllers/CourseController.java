@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import RIWI.simulacro.api.dtos.reqest.CourseRequest;
 import RIWI.simulacro.api.dtos.response.CourseResponse;
+import RIWI.simulacro.api.dtos.response.CourseResponseFull;
 import RIWI.simulacro.infraestructure.abstractServices.ICourseService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,6 +59,12 @@ public class CourseController {
     @PutMapping("update/{id}")
     public ResponseEntity<CourseResponse> putMethodName(@PathVariable int id, @RequestBody @Validated CourseRequest request) {
         CourseResponse response = courseService.update(request, id);
+        return ResponseEntity.ok(response);
+    }
+    
+    @GetMapping("getBy/{id}/lessons")
+    public ResponseEntity<CourseResponseFull> getMethodByIdWithLessons(@PathVariable int id) {
+        CourseResponseFull response =  courseService.getByIdLessons(id);
         return ResponseEntity.ok(response);
     }
     

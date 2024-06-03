@@ -32,7 +32,7 @@ public class Lesson {
     private String content;
     
     @ManyToOne
-    @JoinColumn(name="assignment_id", referencedColumnName = "id")
+    @JoinColumn(name="course_id", referencedColumnName = "id")
     private Course course;
 
     @OneToMany(mappedBy ="lesson")

@@ -8,26 +8,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import RIWI.simulacro.api.dtos.reqest.CourseRequest;
-import RIWI.simulacro.api.dtos.reqest.UserRequest;
+
 import RIWI.simulacro.api.dtos.response.CourseResponse;
-import RIWI.simulacro.api.dtos.response.EnrollmentsResponse;
-import RIWI.simulacro.api.dtos.response.EnrollmentsResponseInUser;
-import RIWI.simulacro.api.dtos.response.InstructorResponse;
-import RIWI.simulacro.api.dtos.response.MessageResponse;
-import RIWI.simulacro.api.dtos.response.MessageResponseInUser;
-import RIWI.simulacro.api.dtos.response.StudentResponse;
-import RIWI.simulacro.api.dtos.response.SubmissionResponseInUser;
+import RIWI.simulacro.api.dtos.response.CourseResponseFull;
+import RIWI.simulacro.api.dtos.response.LessonResponse;
 import RIWI.simulacro.api.dtos.response.UserResponse;
 import RIWI.simulacro.domain.entities.Course;
-import RIWI.simulacro.domain.entities.Enrollment;
-import RIWI.simulacro.domain.entities.Message;
-import RIWI.simulacro.domain.entities.Submission;
+import RIWI.simulacro.domain.entities.Lesson;
 import RIWI.simulacro.domain.entities.User;
 import RIWI.simulacro.domain.repositories.CourseRespository;
-import RIWI.simulacro.domain.repositories.UserRespository;
 import RIWI.simulacro.infraestructure.abstractServices.ICourseService;
-import RIWI.simulacro.infraestructure.abstractServices.IUserService;
-import RIWI.simulacro.utils.enums.RoleUser;
 import RIWI.simulacro.utils.exceptcions.IdNotFoundException;
 import RIWI.simulacro.utils.exceptcions.IdNotMatchedException;
 import jakarta.transaction.Transactional;
@@ -79,6 +69,12 @@ public class CourseService implements ICourseService {
         return convertCourseToCourseResponse(response);
     }
 
+    @Override
+    public CourseResponseFull getByIdLessons(Integer id) {
+        Course response = courseRespository.findById(id).orElseThrow(()->new IdNotFoundException("Course"));
+        return convertCourseToCourseResponseFull(response);
+    }
+
 
     public CourseResponse convertCourseToCourseResponse(Course entity){
         CourseResponse response = new CourseResponse();
@@ -86,6 +82,20 @@ public class CourseService implements ICourseService {
         response.setInstructor(convertUserToUserResponse(entity.getInstructor()));
         return response;
     }
+
+    public CourseResponseFull convertCourseToCourseResponseFull(Course entity){
+        CourseResponseFull response = new CourseResponseFull();
+        BeanUtils.copyProperties(entity, response);
+        response.setInstructor(convertUserToUserResponse(entity.getInstructor()));
+        response.setLessons(entity.getLessons().stream().map(lesson -> convertLessonToLessonResponse(lesson)).toList());
+        return response;
+    }
+    public LessonResponse convertLessonToLessonResponse(Lesson entity){
+        LessonResponse response = new LessonResponse();
+        BeanUtils.copyProperties(entity, response);
+        return response;
+    }
+
    
     public UserResponse convertUserToUserResponse(User entity){
         UserResponse response = new UserResponse();
@@ -101,7 +111,7 @@ public class CourseService implements ICourseService {
         course.setInstructor(instructor);
         return course;
     }
-    //User To User Response
+    
 
   
 

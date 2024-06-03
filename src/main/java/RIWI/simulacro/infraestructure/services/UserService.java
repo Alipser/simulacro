@@ -6,13 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
 import RIWI.simulacro.api.dtos.reqest.UserRequest;
 import RIWI.simulacro.api.dtos.response.CourseResponse;
-import RIWI.simulacro.api.dtos.response.EnrollmentsResponse;
 import RIWI.simulacro.api.dtos.response.EnrollmentsResponseInUser;
 import RIWI.simulacro.api.dtos.response.InstructorResponse;
-import RIWI.simulacro.api.dtos.response.MessageResponse;
 import RIWI.simulacro.api.dtos.response.MessageResponseInUser;
 import RIWI.simulacro.api.dtos.response.StudentResponse;
 import RIWI.simulacro.api.dtos.response.SubmissionResponseInUser;
@@ -46,7 +43,7 @@ public class UserService implements IUserService {
 
     @Override
     public UserResponse create(UserRequest request) {
-        // TODO Auto-generated method stub
+     
         User entityforsaving = convertUserRequestToEntity(request);
         UserResponse response = convertUserToUserResponse(userRespository.save(entityforsaving));
         return response;
@@ -54,7 +51,7 @@ public class UserService implements IUserService {
 
     @Override
     public UserResponse update(UserRequest request, Integer id) {
-        // TODO Auto-generated method stub
+     
         User entityforsaving = convertUserRequestToEntity(request);
         UserResponse response = convertUserToUserResponse(userRespository.save(entityforsaving));
         return response;
@@ -62,7 +59,7 @@ public class UserService implements IUserService {
 
     @Override
     public void delete(Integer id) {
-        User userEntity = userRespository.findById(id).orElseThrow(()->new IdNotFoundException("User"));
+        userRespository.findById(id).orElseThrow(()->new IdNotFoundException("User"));
         userRespository.deleteById(id);
     }
 

@@ -19,10 +19,7 @@ public class SubmissionRequest {
         
         @NotBlank(message = "Content must be a text not null")
         private String content;
-        @PastOrPresent
-        private LocalDate submissionDate;
-
-        
+                
         private double grade;
 
         @NotNull
